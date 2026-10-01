@@ -1,0 +1,5139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>فلسطين... ذاكرة لا تموت | مشروع المعهد النموذجي بقبلي</title>
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Cinzel:wght@500;700;900&display=swap"
+          rel="stylesheet">
+
+    <!-- =========================================================
+         FONT AWESOME
+    ========================================================== -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+
+        /* =========================================================
+           1. GLOBAL VARIABLES
+        ========================================================== */
+
+        :root {
+
+            --bg-dark: #0a0c0e;
+            --bg-card: rgba(18, 22, 28, 0.75);
+            --bg-card-border: rgba(255,255,255,0.1);
+
+            --paly-black: #050505;
+            --paly-white: #f8f9fa;
+
+            --paly-green: #10b981;
+            --paly-green-glow: rgba(16,185,129,0.4);
+
+            --paly-red: #ef4444;
+            --paly-red-glow: rgba(239,68,68,0.4);
+
+            --paly-gold: #f59e0b;
+
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+
+            --font-ar: 'Cairo', sans-serif;
+            --font-en: 'Cinzel', serif;
+
+            --transition-smooth:
+                all 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-ar);
+            overflow-x: hidden;
+            line-height: 1.8;
+
+            background-image:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(239,68,68,0.05) 0%,
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(16,185,129,0.05) 0%,
+                    transparent 40%
+                );
+
+            background-attachment: fixed;
+        }
+
+
+        /* =========================================================
+           SCROLLBAR
+        ========================================================== */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--paly-green);
+        }
+
+
+        /* =========================================================
+           HELPERS
+        ========================================================== */
+
+        .container {
+            max-width: 1280px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .en-font {
+            font-family: var(--font-en);
+        }
+
+        .glow-red {
+            text-shadow: 0 0 15px var(--paly-red-glow);
+        }
+
+        .glow-green {
+            text-shadow: 0 0 15px var(--paly-green-glow);
+        }
+
+
+        /* =========================================================
+           SECTION HEADERS
+        ========================================================== */
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff 0%,
+                    var(--text-muted) 100%
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            color: var(--paly-green);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+
+            width: 60px;
+            height: 3px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--paly-red),
+                    var(--paly-green)
+                );
+
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+
+        /* =========================================================
+           GLASS CARD
+        ========================================================== */
+
+        .glass-card {
+            background: var(--bg-card);
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            border: 1px solid var(--bg-card-border);
+
+            border-radius: 16px;
+            padding: 2rem;
+
+            transition: var(--transition-smooth);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255,255,255,0.25);
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 30px rgba(0,0,0,0.5);
+        }
+
+
+        /* =========================================================
+           REVEAL ANIMATION
+        ========================================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: var(--transition-smooth);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           IMAGE PLACEHOLDER
+        ========================================================== */
+
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            transition: var(--transition-smooth);
+
+            background: #1a1e24;
+        }
+
+
+        /* =========================================================
+           LOADING SCREEN
+        ========================================================== */
+
+        #loading-screen {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            background: var(--paly-black);
+
+            z-index: 9999;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            transition:
+                opacity 0.8s ease,
+                visibility 0.8s ease;
+        }
+
+        .loader-flag-line {
+
+            width: 120px;
+            height: 4px;
+
+            background: rgba(255,255,255,0.1);
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 2px;
+
+            margin-bottom: 1.5rem;
+        }
+
+        .loader-flag-line::after {
+
+            content: '';
+
+            position: absolute;
+
+            left: -100%;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--paly-red),
+                    var(--paly-white),
+                    var(--paly-green)
+                );
+
+            animation:
+                loadingProgress 2s infinite ease-in-out;
+        }
+
+        @keyframes loadingProgress {
+
+            0% {
+                left: -100%;
+            }
+
+            50% {
+                left: 0;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .loader-title {
+
+            font-size: 1.8rem;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            color: var(--paly-white);
+
+            animation:
+                pulseText 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseText {
+
+            0%,100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+
+        /* =========================================================
+           SCROLL PROGRESS
+        ========================================================== */
+
+        #scroll-progress {
+
+            position: fixed;
+
+            top: 0;
+            right: 0;
+
+            height: 3px;
+
+            width: 0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--paly-red),
+                    var(--paly-white),
+                    var(--paly-green)
+                );
+
+            z-index: 1001;
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================== */
+
+        .navbar {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            padding: 1.2rem 0;
+
+            transition: var(--transition-smooth);
+
+            background: rgba(10,12,14,0.4);
+
+            backdrop-filter: blur(10px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.05);
+        }
+
+        .navbar.scrolled {
+
+            padding: 0.8rem 0;
+
+            background:
+                rgba(10,12,14,0.95);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .nav-container {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: var(--paly-white);
+
+            font-weight: 700;
+
+            font-size: 1.2rem;
+        }
+
+        .logo-symbol {
+
+            width: 12px;
+            height: 12px;
+
+            background:
+                var(--paly-red);
+
+            transform: rotate(45deg);
+
+            box-shadow:
+                0 0 10px var(--paly-red);
+        }
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 1.8rem;
+
+            list-style: none;
+        }
+
+        .nav-links a {
+
+            color: var(--text-muted);
+
+            text-decoration: none;
+
+            font-size: 0.95rem;
+
+            font-weight: 600;
+
+            transition: var(--transition-smooth);
+
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+
+            color: var(--paly-white);
+        }
+
+        .nav-links a::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -5px;
+            right: 0;
+
+            width: 0%;
+
+            height: 2px;
+
+            background:
+                var(--paly-green);
+
+            transition:
+                var(--transition-smooth);
+        }
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+
+            display: none;
+
+            background: none;
+
+            border: none;
+
+            color: var(--paly-white);
+
+            font-size: 1.5rem;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================== */
+
+        .hero {
+
+            height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            z-index: -2;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(10,12,14,0.4),
+                    rgba(10,12,14,0.95)
+                ),
+                url('PUT_HERO_BACKGROUND_IMAGE_URL_HERE')
+                center/cover no-repeat;
+
+            transform: scale(1.05);
+
+            transition:
+                transform 0.5s ease-out;
+        }
+
+        .hero-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    transparent 0%,
+                    var(--bg-dark) 90%
+                );
+
+            z-index: -1;
+        }
+
+        .hero-content {
+
+            text-align: center;
+
+            max-width: 900px;
+
+            z-index: 1;
+        }
+
+        .hero-badge {
+
+            display: inline-block;
+
+            padding:
+                0.4rem 1.2rem;
+
+            background:
+                rgba(239,68,68,0.15);
+
+            border:
+                1px solid rgba(239,68,68,0.3);
+
+            color:
+                var(--paly-red);
+
+            border-radius: 50px;
+
+            font-size: 0.85rem;
+
+            font-weight: 700;
+
+            margin-bottom: 1.5rem;
+
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+
+            font-size: 4.5rem;
+
+            font-weight: 900;
+
+            line-height: 1.1;
+
+            margin-bottom: 1rem;
+
+            letter-spacing: -1px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #FFFFFF 0%,
+                    #E0E0E0 100%
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            text-shadow:
+                0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .hero-subtitle-ar {
+
+            font-size: 1.8rem;
+
+            color:
+                var(--paly-green);
+
+            font-weight: 600;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle-en {
+
+            font-size: 1.2rem;
+
+            color:
+                var(--text-muted);
+
+            margin-bottom: 2.5rem;
+
+            letter-spacing: 1px;
+        }
+
+        .hero-btns {
+
+            display: flex;
+
+            gap: 1.2rem;
+
+            justify-content: center;
+        }
+
+        .btn {
+
+            padding:
+                0.9rem 2.2rem;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            font-size: 1rem;
+
+            text-decoration: none;
+
+            transition:
+                var(--transition-smooth);
+
+            cursor: pointer;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            border: none;
+        }
+
+        .btn-primary {
+
+            background:
+                var(--paly-red);
+
+            color: #fff;
+
+            box-shadow:
+                0 4px 20px var(--paly-red-glow);
+        }
+
+        .btn-primary:hover {
+
+            background:
+                #dc2626;
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 25px var(--paly-red-glow);
+        }
+
+        .btn-secondary {
+
+            background:
+                rgba(255,255,255,0.05);
+
+            color:
+                var(--paly-white);
+
+            border:
+                1px solid rgba(255,255,255,0.15);
+        }
+
+        .btn-secondary:hover {
+
+            background:
+                rgba(255,255,255,0.1);
+
+            border-color:
+                var(--paly-white);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =========================================================
+           FLOATING ACCENTS
+        ========================================================== */
+
+        .floating-accent {
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            filter: blur(80px);
+
+            z-index: -1;
+
+            pointer-events: none;
+        }
+
+        .accent-1 {
+
+            top: 20%;
+            right: 10%;
+
+            width: 300px;
+            height: 300px;
+
+            background:
+                rgba(239,68,68,0.08);
+        }
+
+        .accent-2 {
+
+            bottom: 20%;
+            left: 10%;
+
+            width: 350px;
+            height: 350px;
+
+            background:
+                rgba(16,185,129,0.08);
+        }
+
+
+        /* =========================================================
+           TIMELINE
+        ========================================================== */
+
+        .timeline {
+
+            position: relative;
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+
+            left: 50%;
+
+            width: 2px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    var(--paly-green),
+                    var(--paly-red),
+                    transparent
+                );
+
+            transform:
+                translateX(-50%);
+        }
+
+        .timeline-item {
+
+            margin-bottom: 5rem;
+
+            position: relative;
+
+            width: 50%;
+
+            padding: 0 2.5rem;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1.5rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+
+            left: 0;
+
+            text-align: left;
+
+            direction: ltr;
+        }
+
+        .timeline-item:nth-child(even) {
+
+            left: 50%;
+
+            text-align: right;
+
+            direction: rtl;
+        }
+
+        .timeline-content {
+
+            flex: 1;
+        }
+
+        .timeline-side-image {
+
+            width: 150px;
+
+            height: 150px;
+
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            border:
+                1px solid rgba(255,255,255,0.15);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.5);
+
+            transition:
+                var(--transition-smooth);
+
+            flex-shrink: 0;
+        }
+
+        .timeline-side-image:hover {
+
+            transform:
+                scale(1.06);
+
+            border-color:
+                var(--paly-green);
+
+            box-shadow:
+                0 0 25px rgba(16,185,129,0.25);
+        }
+
+        .timeline-item:nth-child(even)
+        .timeline-side-image {
+
+            order: 2;
+        }
+
+        .timeline-dot {
+
+            position: absolute;
+
+            top: 20px;
+
+            width: 16px;
+            height: 16px;
+
+            background:
+                var(--bg-dark);
+
+            border:
+                3px solid var(--paly-green);
+
+            border-radius: 50%;
+
+            z-index: 2;
+
+            transition:
+                var(--transition-smooth);
+        }
+
+        .timeline-item:nth-child(odd)
+        .timeline-dot {
+
+            right: -8px;
+        }
+
+        .timeline-item:nth-child(even)
+        .timeline-dot {
+
+            left: -8px;
+        }
+
+        .timeline-item:hover
+        .timeline-dot {
+
+            background:
+                var(--paly-red);
+
+            border-color:
+                var(--paly-white);
+
+            box-shadow:
+                0 0 15px var(--paly-red);
+
+            transform:
+                scale(1.3);
+        }
+
+        .timeline-year {
+
+            font-size: 1.8rem;
+
+            font-weight: 900;
+
+            color:
+                var(--paly-red);
+
+            margin-bottom: 0.5rem;
+
+            font-family:
+                var(--font-en);
+        }
+
+        .timeline-content h3 {
+
+            font-size: 1.4rem;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content p {
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.95rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           CHARACTERS
+        ========================================================== */
+
+        .characters-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,minmax(300px,1fr));
+
+            gap: 2.5rem;
+        }
+
+        .character-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            height: 420px;
+
+            cursor: pointer;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            transition:
+                var(--transition-smooth);
+        }
+
+        .character-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.55);
+        }
+
+        .character-card img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.6s
+                cubic-bezier(0.16,1,0.3,1);
+        }
+
+        .character-card:hover img {
+
+            transform:
+                scale(1.08);
+        }
+
+        .character-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(10,12,14,0.95) 0%,
+                    rgba(10,12,14,0.2) 60%,
+                    transparent 100%
+                );
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            padding: 2rem;
+
+            transition:
+                var(--transition-smooth);
+        }
+
+        .character-name {
+
+            font-size: 1.6rem;
+
+            font-weight: 700;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.3rem;
+        }
+
+        .character-role {
+
+            color:
+                var(--paly-green);
+
+            font-size: 0.9rem;
+
+            font-weight: 600;
+
+            margin-bottom: 1rem;
+        }
+
+        .character-btn {
+
+            align-self: flex-start;
+
+            font-size: 0.85rem;
+
+            padding:
+                0.5rem 1rem;
+
+            border-radius: 6px;
+
+            background:
+                rgba(255,255,255,0.1);
+
+            color:
+                var(--paly-white);
+
+            border:
+                1px solid rgba(255,255,255,0.2);
+
+            transition:
+                var(--transition-smooth);
+
+            cursor: pointer;
+        }
+
+        .character-card:hover
+        .character-btn {
+
+            background:
+                var(--paly-red);
+
+            border-color:
+                var(--paly-red);
+        }
+
+
+        /* =========================================================
+           MARTYRS
+        ========================================================== */
+
+        .martyrs-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,minmax(300px,1fr));
+
+            gap: 2rem;
+        }
+
+        .martyr-card {
+
+            text-align: center;
+
+            position: relative;
+
+            padding:
+                2rem;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(20,24,30,0.6) 0%,
+                    rgba(10,12,14,0.8) 100%
+                );
+
+            overflow: hidden;
+        }
+
+        .martyr-person {
+
+            padding: 0 !important;
+
+            overflow: hidden;
+        }
+
+        .martyr-photo {
+
+            width: 100%;
+
+            height: 250px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .martyr-person-content {
+
+            padding: 1.8rem;
+        }
+
+        .martyr-person h3 {
+
+            font-size: 1.5rem;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.4rem;
+        }
+
+        .martyr-role {
+
+            color:
+                var(--paly-green);
+
+            font-size: 0.9rem;
+
+            font-weight: 700;
+
+            margin-bottom: 0.8rem;
+        }
+
+        .martyr-icon-wrapper {
+
+            width: 70px;
+            height: 70px;
+
+            margin:
+                0 auto 1.5rem;
+
+            background:
+                rgba(239,68,68,0.1);
+
+            border:
+                1px solid rgba(239,68,68,0.2);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color:
+                var(--paly-red);
+
+            font-size: 1.8rem;
+        }
+
+        .martyr-card h3 {
+
+            font-size: 1.4rem;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.8rem;
+        }
+
+        .martyr-card p {
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.95rem;
+
+            line-height: 1.7;
+        }
+
+        .candle-symbol {
+
+            display: inline-block;
+
+            margin-top: 1rem;
+
+            color:
+                var(--paly-gold);
+
+            font-size: 1.2rem;
+
+            animation:
+                candleFlicker 1.5s infinite alternate;
+        }
+
+        @keyframes candleFlicker {
+
+            0% {
+                opacity: 0.7;
+                transform: scale(0.98);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+
+        /* =========================================================
+           PRISONERS
+        ========================================================== */
+
+        .prisoners-wrapper {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 2.5rem;
+
+            align-items: center;
+        }
+
+        .prisoner-img-box {
+
+            position: relative;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            height: 400px;
+
+            border:
+                1px solid var(--bg-card-border);
+        }
+
+        .prisoner-img-box img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .prisoner-info h3 {
+
+            font-size: 2rem;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.5rem;
+        }
+
+        .prisoner-title {
+
+            color:
+                var(--paly-green);
+
+            font-size: 1.1rem;
+
+            font-weight: 600;
+
+            margin-bottom: 1.2rem;
+        }
+
+        .prisoner-info p {
+
+            color:
+                var(--text-muted);
+
+            margin-bottom: 1.5rem;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           GAZA STATS
+        ========================================================== */
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,minmax(200px,1fr));
+
+            gap: 1.5rem;
+
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+
+            text-align: center;
+
+            padding: 2rem 1rem;
+        }
+
+        .stat-icon {
+
+            font-size: 2rem;
+
+            color:
+                var(--paly-green);
+
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+
+            font-size: 2.5rem;
+
+            font-weight: 900;
+
+            color:
+                var(--paly-white);
+
+            font-family:
+                var(--font-en);
+
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.9rem;
+        }
+
+
+        /* =========================================================
+           GALLERY
+        ========================================================== */
+
+        .gallery-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill,minmax(280px,1fr));
+
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+
+            position: relative;
+
+            height: 240px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                var(--transition-smooth);
+        }
+
+        .gallery-item:hover img {
+
+            transform:
+                scale(1.1);
+        }
+
+        .gallery-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,0.5);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+
+            transition:
+                var(--transition-smooth);
+
+            color:
+                var(--paly-white);
+
+            font-size: 1.5rem;
+        }
+
+        .gallery-item:hover
+        .gallery-overlay {
+
+            opacity: 1;
+        }
+
+
+        /* =========================================================
+           HERITAGE
+        ========================================================== */
+
+        .heritage-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,minmax(280px,1fr));
+
+            gap: 2rem;
+
+            margin-bottom: 4rem;
+        }
+
+        .heritage-card {
+
+            text-align: center;
+        }
+
+        .heritage-img-wrapper {
+
+            height: 200px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            margin-bottom: 1.2rem;
+        }
+
+        .heritage-img-wrapper img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .heritage-card h3 {
+
+            font-size: 1.3rem;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.5rem;
+        }
+
+        .heritage-card p {
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.9rem;
+        }
+
+
+        /* =========================================================
+           MAP
+        ========================================================== */
+
+        .map-section {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 2rem;
+
+            align-items: center;
+
+            background:
+                var(--bg-card);
+
+            border-radius: 20px;
+
+            padding: 3rem;
+
+            border:
+                1px solid var(--bg-card-border);
+        }
+
+        .map-visual {
+
+            position: relative;
+
+            height: 500px;
+
+            background:
+                #12161c;
+
+            border-radius: 16px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            overflow: hidden;
+        }
+
+        /* =========================================================
+           IMPORTANT:
+           PUT A REAL CLEAR MAP IMAGE HERE
+        ========================================================== */
+
+        .map-image {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            padding: 20px;
+
+            opacity: 0.92;
+
+            filter:
+                drop-shadow(
+                    0 10px 25px rgba(0,0,0,0.6)
+                );
+        }
+
+
+        /* =========================================================
+           HOTSPOTS
+        ========================================================== */
+
+        .hotspot {
+
+            position: absolute;
+
+            width: 16px;
+            height: 16px;
+
+            background:
+                var(--paly-red);
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 10px var(--paly-red);
+
+            transition:
+                var(--transition-smooth);
+
+            z-index: 5;
+        }
+
+        .hotspot::after {
+
+            content: '';
+
+            position: absolute;
+
+            top: -6px;
+            left: -6px;
+
+            width: 28px;
+            height: 28px;
+
+            border:
+                2px solid var(--paly-red);
+
+            border-radius: 50%;
+
+            animation:
+                pulseRing 2s infinite;
+        }
+
+        @keyframes pulseRing {
+
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .hotspot.active {
+
+            background:
+                var(--paly-green);
+
+            box-shadow:
+                0 0 15px var(--paly-green);
+        }
+
+        .hotspot.active::after {
+
+            border-color:
+                var(--paly-green);
+        }
+
+
+        /*
+           Approximate positions relative to the
+           real map image.
+        */
+
+        .hotspot[data-city="jerusalem"] {
+
+            top: 47%;
+            left: 55%;
+        }
+
+        .hotspot[data-city="gaza"] {
+
+            top: 55%;
+            left: 37%;
+        }
+
+        .hotspot[data-city="nablus"] {
+
+            top: 35%;
+            left: 55%;
+        }
+
+        .hotspot[data-city="hebron"] {
+
+            top: 60%;
+            left: 54%;
+        }
+
+
+        .map-label {
+
+            position: absolute;
+
+            background:
+                rgba(0,0,0,0.75);
+
+            padding:
+                0.3rem 0.7rem;
+
+            border-radius: 6px;
+
+            font-size: 0.75rem;
+
+            color:
+                white;
+
+            pointer-events: none;
+
+            opacity: 0;
+
+            transform:
+                translateY(5px);
+
+            transition:
+                var(--transition-smooth);
+        }
+
+        .hotspot:hover + .map-label {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+        .map-details {
+
+            padding: 1rem;
+        }
+
+        .map-details h3 {
+
+            font-size: 2rem;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.5rem;
+        }
+
+        .map-details .city-tag {
+
+            display: inline-block;
+
+            color:
+                var(--paly-green);
+
+            font-weight: 700;
+
+            margin-bottom: 1rem;
+        }
+
+        .map-details p {
+
+            color:
+                var(--text-muted);
+
+            line-height: 1.8;
+
+            font-size: 1rem;
+        }
+
+
+        /* =========================================================
+           MEMORY
+        ========================================================== */
+
+        .memory-quotes {
+
+            max-width: 800px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .quote-card {
+
+            padding: 3rem 2rem;
+
+            position: relative;
+        }
+
+        .quote-card i {
+
+            font-size: 3rem;
+
+            color:
+                rgba(255,255,255,0.05);
+
+            position: absolute;
+
+            top: 20px;
+            right: 20px;
+        }
+
+        .quote-text {
+
+            font-size: 1.5rem;
+
+            font-weight: 600;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 1.5rem;
+
+            line-height: 1.6;
+        }
+
+        .quote-author {
+
+            color:
+                var(--paly-red);
+
+            font-weight: 700;
+
+            font-size: 1rem;
+        }
+
+
+        /* =========================================================
+           STUDENTS' VOICES
+        ========================================================== */
+
+        .voice-section-wrapper {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1.5fr;
+
+            gap: 2.5rem;
+        }
+
+        .voice-form-box h3 {
+
+            font-size: 1.5rem;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+
+            display: block;
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.9rem;
+
+            margin-bottom: 0.4rem;
+        }
+
+        .form-control {
+
+            width: 100%;
+
+            padding:
+                0.8rem 1rem;
+
+            background:
+                rgba(0,0,0,0.3);
+
+            border:
+                1px solid var(--bg-card-border);
+
+            border-radius: 8px;
+
+            color:
+                var(--paly-white);
+
+            font-family:
+                var(--font-ar);
+
+            font-size: 0.95rem;
+
+            transition:
+                var(--transition-smooth);
+        }
+
+        .form-control:focus {
+
+            outline: none;
+
+            border-color:
+                var(--paly-green);
+
+            background:
+                rgba(0,0,0,0.5);
+        }
+
+        textarea.form-control {
+
+            resize: vertical;
+
+            height: 120px;
+        }
+
+        .messages-wall {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 1.2rem;
+
+            max-height: 500px;
+
+            overflow-y: auto;
+
+            padding-left: 0.5rem;
+        }
+
+        .message-card {
+
+            background:
+                rgba(0,0,0,0.4);
+
+            border-right:
+                4px solid var(--paly-green);
+
+            padding:
+                1.2rem;
+
+            border-radius:
+                8px 0 0 8px;
+
+            animation:
+                fadeInMsg 0.5s ease-out;
+        }
+
+        @keyframes fadeInMsg {
+
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .message-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .message-author {
+
+            font-weight: 700;
+
+            color:
+                var(--paly-white);
+        }
+
+        .message-class {
+
+            font-size: 0.8rem;
+
+            color:
+                var(--paly-green);
+
+            background:
+                rgba(16,185,129,0.1);
+
+            padding:
+                0.2rem 0.6rem;
+
+            border-radius: 4px;
+        }
+
+        .message-body {
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.95rem;
+        }
+
+
+        /* =========================================================
+           SOURCES
+        ========================================================== */
+
+        .sources-list {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 1.5rem;
+
+            list-style: none;
+        }
+
+        .source-item {
+
+            padding:
+                0.8rem 1.5rem;
+
+            background:
+                rgba(255,255,255,0.03);
+
+            border:
+                1px solid var(--bg-card-border);
+
+            border-radius: 50px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 0.9rem;
+
+            font-weight: 600;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .source-item i {
+
+            color:
+                var(--paly-green);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================== */
+
+        footer {
+
+            background:
+                var(--paly-black);
+
+            padding:
+                4rem 0 2rem;
+
+            border-top:
+                1px solid rgba(255,255,255,0.05);
+
+            margin-top: 6rem;
+
+            text-align: center;
+        }
+
+        .footer-school {
+
+            font-size: 1.3rem;
+
+            font-weight: 700;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-meta {
+
+            color:
+                var(--paly-green);
+
+            font-size: 1rem;
+
+            margin-bottom: 1rem;
+        }
+
+        .footer-author {
+
+            color:
+                var(--paly-red);
+
+            font-weight: 700;
+
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-tagline {
+
+            color:
+                var(--text-muted);
+
+            font-family:
+                var(--font-en);
+
+            letter-spacing: 2px;
+
+            font-size: 0.85rem;
+
+            margin-bottom: 2rem;
+        }
+
+
+        /* =========================================================
+           MODAL
+        ========================================================== */
+
+        .modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(5,5,5,0.85);
+
+            backdrop-filter:
+                blur(10px);
+
+            z-index: 9999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 2rem;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                var(--transition-smooth);
+        }
+
+        .modal-overlay.active {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+        .modal-container {
+
+            background:
+                var(--bg-dark);
+
+            border:
+                1px solid var(--bg-card-border);
+
+            border-radius: 20px;
+
+            max-width: 700px;
+
+            width: 100%;
+
+            max-height: 85vh;
+
+            overflow-y: auto;
+
+            position: relative;
+
+            padding: 2.5rem;
+
+            transform:
+                scale(0.9);
+
+            transition:
+                var(--transition-smooth);
+
+            box-shadow:
+                0 25px 50px -12px rgba(0,0,0,0.7);
+        }
+
+        .modal-overlay.active
+        .modal-container {
+
+            transform:
+                scale(1);
+        }
+
+        .modal-close {
+
+            position: absolute;
+
+            top: 1.5rem;
+
+            left: 1.5rem;
+
+            background:
+                rgba(255,255,255,0.05);
+
+            border: none;
+
+            color:
+                var(--paly-white);
+
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            transition:
+                var(--transition-smooth);
+
+            z-index: 5;
+        }
+
+        .modal-close:hover {
+
+            background:
+                var(--paly-red);
+        }
+
+        .modal-header-img {
+
+            width: 100%;
+
+            height: 280px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+
+            font-size: 2rem;
+
+            color:
+                var(--paly-white);
+
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-subtitle {
+
+            color:
+                var(--paly-green);
+
+            font-size: 0.95rem;
+
+            margin-bottom: 1.5rem;
+
+            font-weight: 600;
+        }
+
+        .modal-body {
+
+            color:
+                var(--text-muted);
+
+            line-height: 1.8;
+
+            font-size: 1rem;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================== */
+
+        @media (max-width: 992px) {
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .prisoners-wrapper,
+            .voice-section-wrapper,
+            .map-section {
+
+                grid-template-columns: 1fr;
+            }
+
+           .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding: 0 1rem;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center !important;
+                direction: rtl !important;
+                gap: 1.2rem;
+            }
+
+            .timeline-dot {
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item:hover .timeline-dot {
+                transform: translateX(-50%) scale(1.3);
+            }
+
+            .timeline-side-image {
+                width: 85%;
+                max-width: 350px;
+                height: 200px;
+                order: 0 !important;
+            }
+
+            .timeline-content {
+                width: 85%;
+                max-width: 500px;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+
+            .nav-links {
+
+                position: fixed;
+
+                top: 70px;
+
+                right: -100%;
+
+                width: 100%;
+
+                height:
+                    calc(100vh - 70px);
+
+                background:
+                    var(--bg-dark);
+
+                flex-direction: column;
+
+                align-items: center;
+
+                padding-top: 3rem;
+
+                transition:
+                    var(--transition-smooth);
+            }
+
+            .nav-links.mobile-active {
+
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+
+                display: block;
+            }
+
+            .hero-title {
+
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+
+                font-size: 2.2rem;
+            }
+
+            .hero-btns {
+
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+            .btn {
+
+                width: 90%;
+
+                justify-content: center;
+            }
+
+            .map-section {
+
+                padding: 1.5rem;
+            }
+
+            .map-visual {
+
+                height: 400px;
+            }
+
+            .modal-container {
+
+                padding: 1.5rem;
+            }
+        }
+        /* =========================================================
+   FINAL TIMELINE FIX — MOBILE
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .timeline {
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+        padding: 2rem 0;
+    }
+
+    .timeline::before {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        position: relative !important;
+
+        width: 100% !important;
+
+        left: 0 !important;
+        right: auto !important;
+
+        margin: 0 0 5rem 0 !important;
+
+        padding: 0 15px !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        text-align: center !important;
+
+        direction: rtl !important;
+
+        gap: 1.2rem;
+    }
+
+    .timeline-dot,
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        position: absolute !important;
+
+        left: 50% !important;
+        right: auto !important;
+
+        top: 0 !important;
+
+        transform: translateX(-50%) !important;
+    }
+
+    .timeline-item:hover .timeline-dot {
+        transform: translateX(-50%) scale(1.3) !important;
+    }
+
+    .timeline-side-image,
+    .timeline-item:nth-child(even) .timeline-side-image {
+        width: 90% !important;
+        max-width: 350px !important;
+
+        height: 200px !important;
+
+        order: 1 !important;
+
+        margin: 20px auto 0 !important;
+    }
+
+    .timeline-content {
+        width: 90% !important;
+        max-width: 500px !important;
+
+        margin: 0 auto !important;
+
+        text-align: center !important;
+    }
+
+    .timeline-year,
+    .timeline-content h3,
+    .timeline-content p {
+        text-align: center !important;
+    }
+}
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SCROLL PROGRESS
+========================================================== -->
+
+<div id="scroll-progress"></div>
+
+
+<!-- =========================================================
+     LOADING SCREEN
+========================================================== -->
+
+<div id="loading-screen">
+
+    <div class="loader-flag-line"></div>
+
+    <div class="loader-title">
+        فلسطين... ذاكرة لا تموت
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FLOATING ACCENTS
+========================================================== -->
+
+<div class="floating-accent accent-1"></div>
+<div class="floating-accent accent-2"></div>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================== -->
+
+<nav class="navbar" id="navbar">
+
+    <div class="container nav-container">
+
+        <a href="#hero" class="logo">
+
+            <span class="logo-symbol"></span>
+
+            <span>فلسطين</span>
+
+        </a>
+
+
+        <ul class="nav-links" id="nav-links">
+
+            <li>
+                <a href="#hero" class="active">
+                    البداية
+                </a>
+            </li>
+
+            <li>
+                <a href="#story">
+                    القصة
+                </a>
+            </li>
+
+            <li>
+                <a href="#characters">
+                    الشخصيات
+                </a>
+            </li>
+
+            <li>
+                <a href="#martyrs">
+                    الشهداء والضحايا
+                </a>
+            </li>
+
+            <li>
+                <a href="#prisoners">
+                    الأسرى
+                </a>
+            </li>
+
+            <li>
+                <a href="#gaza">
+                    غزة
+                </a>
+            </li>
+
+            <li>
+                <a href="#heritage">
+                    الهوية
+                </a>
+            </li>
+
+            <li>
+                <a href="#memory">
+                    الذاكرة
+                </a>
+            </li>
+
+            <li>
+                <a href="#voices">
+                    أصوات الطلبة
+                </a>
+            </li>
+
+            <li>
+                <a href="#sources">
+                    المصادر
+                </a>
+            </li>
+
+        </ul>
+
+
+        <button
+            class="mobile-menu-btn"
+            id="mobile-toggle"
+            aria-label="Open Menu">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================== -->
+
+<section class="hero" id="hero">
+
+    <div class="hero-bg" id="hero-bg"></div>
+
+    <div class="hero-overlay"></div>
+
+
+    <div class="container hero-content">
+
+        <span class="hero-badge">
+            المعهد النموذجي بقبلي • 2ème Sciences
+        </span>
+
+
+        <h1 class="hero-title">
+            فلسطين
+        </h1>
+
+
+        <div class="hero-subtitle-ar">
+            ذاكرة لا تموت... وصمود يتجدد
+        </div>
+
+
+        <div class="hero-subtitle-en en-font">
+            A land, a people, a memory that refuses to disappear.
+        </div>
+
+
+        <div class="hero-btns">
+
+            <a href="#story"
+               class="btn btn-primary">
+
+                <span>
+                    اكتشف القصة
+                </span>
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </a>
+
+
+            <a href="#heritage"
+               class="btn btn-secondary en-font">
+
+                Explore Heritage
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TIMELINE
+========================================================== -->
+
+<section id="story" style="padding:6rem 0;">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                مسار التاريخ والجغرافيا
+            </h2>
+
+            <p>
+                محطات مفصلية تشكل الذاكرة الفلسطينية
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <!-- 1948 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\images.jpg"
+                    alt="النكبة الفلسطينية عام 1948"
+                    class="timeline-side-image">
+
+
+                <div class="glass-card timeline-content">
+
+                    <div class="timeline-year">
+                        1948
+                    </div>
+
+                    <h3>
+                        النكبة والتهجير
+                    </h3>
+
+                    <p>
+                        شهد عام 1948 نزوحاً واسعاً للفلسطينيين من مدن وقرى مختلفة،
+                        وأصبحت قضية اللاجئين إحدى القضايا المركزية في التاريخ الفلسطيني.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 1967 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\_112764675_gettyimages-514699052.jpg.webp"
+                    alt="عام 1967"
+                    class="timeline-side-image">
+
+
+                <div class="glass-card timeline-content">
+
+                    <div class="timeline-year">
+                        1967
+                    </div>
+
+                    <h3>
+                        حرب 1967
+                    </h3>
+
+                    <p>
+                        أدت حرب عام 1967 إلى سيطرة إسرائيل على الضفة الغربية
+                        والقدس الشرقية وقطاع غزة، وتبع ذلك نزوح جديد للسكان الفلسطينيين.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 1970s -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\alahtlal-4.jpg"
+                    alt="محطات من التاريخ الفلسطيني"
+                    class="timeline-side-image">
+
+
+                <div class="glass-card timeline-content">
+
+                    <div class="timeline-year">
+                        1970s - 2020s
+                    </div>
+
+                    <h3>
+                        القيود والاستيطان والحواجز
+                    </h3>
+
+                    <p>
+                        شهدت العقود التالية تطورات سياسية وميدانية متعددة،
+                        من بينها توسع المستوطنات والقيود على الحركة والاعتقالات
+                        وتغيرات متواصلة في الواقع الجغرافي والسياسي.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Gaza -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\الأوضاع-الإنسانية-في-غزة.jpg"
+                    alt="غزة"
+                    class="timeline-side-image">
+
+
+                <div class="glass-card timeline-content">
+
+                    <div class="timeline-year">
+                        2007 - 2023
+                    </div>
+
+                    <h3>
+                        الأوضاع الإنسانية في غزة
+                    </h3>
+
+                    <p>
+                        استمرت الأزمات الإنسانية والاقتصادية في قطاع غزة،
+                        مع قيود شديدة على الحركة والموارد الأساسية وجولات متكررة
+                        من التصعيد العسكري.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- October 7 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\a30b7490-6722-11ee-b978-19a330f16085.png.webp"
+                    alt="7 أكتوبر 2023"
+                    class="timeline-side-image">
+
+
+                <div class="glass-card timeline-content">
+
+                    <div class="timeline-year">
+                        7 Oct 2023
+                    </div>
+
+                    <h3>
+                        نقطة تحول وحرب واسعة
+                    </h3>
+
+                    <p>
+                        أدى هجوم 7 أكتوبر 2023 والتصعيد الذي تلاه إلى حرب واسعة
+                        النطاق وأزمة إنسانية شديدة، خصوصاً في قطاع غزة.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CHARACTERS
+========================================================== -->
+
+<section
+    id="characters"
+    style="padding:6rem 0;background:rgba(0,0,0,0.2);">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                شخصيات في التاريخ الفلسطيني
+            </h2>
+
+            <p>
+                سير ومسارات سياسية وتاريخية موثقة
+            </p>
+
+        </div>
+
+
+        <div class="characters-grid">
+
+
+            <!-- AHMED YASSIN -->
+
+            <div
+                class="character-card reveal"
+                onclick="openModal('modal-yassin')">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\images (2).jpg"
+                    alt="الشيخ أحمد ياسين"
+                    class="img-placeholder">
+
+                <div class="character-overlay">
+
+                    <div class="character-name">
+                        الشيخ أحمد ياسين
+                    </div>
+
+                    <div class="character-role">
+                        شخصية سياسية ودينية فلسطينية
+                    </div>
+
+                    <button class="character-btn">
+                        عرض السيرة التاريخية
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- YAHYA SINWAR -->
+
+            <div
+                class="character-card reveal"
+                onclick="openModal('modal-sinwar')">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\يحيى-السنوار-111-1697026685.webp"
+                    alt="يحيى السنوار"
+                    class="img-placeholder">
+
+                <div class="character-overlay">
+
+                    <div class="character-name">
+                        يحيى السنوار
+                    </div>
+
+                    <div class="character-role">
+                        شخصية سياسية فلسطينية
+                    </div>
+
+                    <button class="character-btn">
+                        عرض المسيرة السياسية
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ISMAIL HANIYEH -->
+
+            <div
+                class="character-card reveal"
+                onclick="openModal('modal-hanieh')">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\images (3).jpg"
+                    alt="إسماعيل هنية"
+                    class="img-placeholder">
+
+                <div class="character-overlay">
+
+                    <div class="character-name">
+                        إسماعيل هنية
+                    </div>
+
+                    <div class="character-role">
+                        رئيس المكتب السياسي السابق
+                    </div>
+
+                    <button class="character-btn">
+                        عرض المسيرة السياسية
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MARTYRS / VICTIMS
+========================================================== -->
+
+<section id="martyrs" style="padding:6rem 0;">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                الشهداء والضحايا
+            </h2>
+
+            <p>
+                أسماء ووجوه تحفظها الذاكرة
+            </p>
+
+        </div>
+
+
+        <div class="martyrs-container">
+
+
+            <!-- CHILDREN -->
+
+            <div class="glass-card martyr-card reveal">
+
+                <div class="martyr-icon-wrapper">
+
+                    <i class="fa-solid fa-child"></i>
+
+                </div>
+
+                <h3>
+                    أطفال غزة
+                </h3>
+
+                <p>
+                    كان الأطفال من بين أكثر الفئات تضرراً من الحرب،
+                    مع فقدان الأرواح والنزوح وتعطل التعليم والخدمات الأساسية.
+                </p>
+
+                <span class="candle-symbol">
+                    <i class="fa-solid fa-fire-flame-simple"></i>
+                </span>
+
+            </div>
+
+
+            <!-- ANAS -->
+
+            <div
+                class="glass-card martyr-card martyr-person reveal"
+                onclick="openModal('modal-anas')"
+                style="cursor:pointer;">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\NYYsS.webp"
+                    alt="أنس الشريف"
+                    class="martyr-photo">
+
+
+                <div class="martyr-person-content">
+
+                    <h3>
+                        أنس الشريف
+                    </h3>
+
+                    <div class="martyr-role">
+                        صحفي فلسطيني
+                    </div>
+
+                    <p>
+                        صحفي فلسطيني ومراسل لقناة الجزيرة في قطاع غزة.
+                        قُتل في مدينة غزة في 10 أغسطس 2025 أثناء عمله الصحفي.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SALEH -->
+
+            <div
+                class="glass-card martyr-card martyr-person reveal"
+                onclick="openModal('modal-saleh')"
+                style="cursor:pointer;">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\images (4).jpg"
+                    alt="صالح الجعفراوي"
+                    class="martyr-photo">
+
+
+                <div class="martyr-person-content">
+
+                    <h3>
+                        صالح الجعفراوي
+                    </h3>
+
+                    <div class="martyr-role">
+                        صحفي وصانع محتوى فلسطيني
+                    </div>
+
+                    <p>
+                        صحفي وصانع محتوى من غزة عُرف بتوثيق الأحداث الإنسانية
+                        والميدانية خلال الحرب، وقُتل في أكتوبر 2025.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FAMILIES -->
+
+            <div class="glass-card martyr-card reveal">
+
+                <div class="martyr-icon-wrapper">
+
+                    <i class="fa-solid fa-people-roof"></i>
+
+                </div>
+
+                <h3>
+                    العائلات والنزوح
+                </h3>
+
+                <p>
+                    تضررت عائلات كثيرة من القتل والنزوح وفقدان المنازل
+                    وتدمير البنية الأساسية والخدمات المدنية.
+                </p>
+
+                <span class="candle-symbol">
+                    <i class="fa-solid fa-fire-flame-simple"></i>
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PRISONERS
+========================================================== -->
+
+<section
+    id="prisoners"
+    style="padding:6rem 0;background:rgba(0,0,0,0.2);">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                الأسرى والمعتقلون
+            </h2>
+
+            <p>
+                قضية الاحتجاز والحقوق الإنسانية
+            </p>
+
+        </div>
+
+
+        <div class="prisoners-wrapper">
+
+
+            <div class="prisoner-featured reveal">
+
+                <div class="prisoner-img-box">
+
+                    <img
+                        src="C:\codage\Nouveau dossier\pppppp\HReQKohWwAIryjN.webp"
+                        alt="د. حسام أبو صفية"
+                        class="img-placeholder">
+
+                </div>
+
+            </div>
+
+
+            <div class="prisoner-info reveal">
+
+                <h3>
+                    د. حسام أبو صفية
+                </h3>
+
+                <div class="prisoner-title">
+                    طبيب أطفال ومدير مستشفى كمال عدوان سابقاً
+                </div>
+
+                <p>
+                    طبيب أطفال فلسطيني عمل في شمال قطاع غزة،
+                    وارتبط اسمه بإدارة مستشفى كمال عدوان خلال فترة الحرب.
+                    أعلنت منظمة الصحة العالمية في نهاية ديسمبر 2024
+                    أنها فقدت الاتصال به بعد احتجازه أثناء مداهمة المستشفى.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="openModal('modal-safiya')">
+
+                    اقرأ التقرير
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GAZA
+========================================================== -->
+
+<section id="gaza" style="padding:6rem 0;">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                غزة — مدينة تحاول أن تبقى
+            </h2>
+
+            <p>
+                مؤشرات إنسانية وتقارير دولية
+            </p>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+
+            <div class="glass-card stat-card reveal">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-house-crack"></i>
+                </div>
+
+                <div
+                    class="stat-number"
+                    data-target="60">
+
+                    0
+
+                </div>
+
+                <div class="stat-label">
+                    ٪ من الوحدات السكنية مدمرة أو متضررة
+                </div>
+
+            </div>
+
+
+            <div class="glass-card stat-card reveal">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-person-walking-luggage"></i>
+                </div>
+
+                <div
+                    class="stat-number"
+                    data-target="1.9">
+
+                    0
+
+                </div>
+
+                <div class="stat-label">
+                    مليون نازح داخل القطاع
+                </div>
+
+            </div>
+
+
+            <div class="glass-card stat-card reveal">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-hospital-user"></i>
+                </div>
+
+                <div
+                    class="stat-number"
+                    data-target="80">
+
+                    0
+
+                </div>
+
+                <div class="stat-label">
+                    ٪ من المرافق الصحية خارج الخدمة
+                </div>
+
+            </div>
+
+
+            <div class="glass-card stat-card reveal">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div
+                    class="stat-number"
+                    data-target="625">
+
+                    0
+
+                </div>
+
+                <div class="stat-label">
+                    ألف طالب محرومون من التعليم
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- GALLERY -->
+
+        <div class="gallery-grid">
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\images (5).jpg"
+                    alt="غزة - صورة 1"
+                    class="img-placeholder">
+
+                <div class="gallery-overlay">
+
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\images (6).jpg"
+                    alt="غزة - صورة 2"
+                    class="img-placeholder">
+
+                <div class="gallery-overlay">
+
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\Gy4A78OXIAArVuG.jpg"
+                    alt="غزة - صورة 3"
+                    class="img-placeholder">
+
+                <div class="gallery-overlay">
+
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\images (7).jpg"
+                    alt="غزة - صورة 4"
+                    class="img-placeholder">
+
+                <div class="gallery-overlay">
+
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     HERITAGE
+========================================================== -->
+
+<section
+    id="heritage"
+    style="padding:6rem 0;background:rgba(0,0,0,0.2);">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                الهوية والتراث الفلسطيني
+            </h2>
+
+            <p>
+                رموز ثقافية تنتقل عبر الأجيال
+            </p>
+
+        </div>
+
+
+        <div class="heritage-grid">
+
+
+            <!-- TATREEZ -->
+
+            <div class="glass-card heritage-card reveal">
+
+                <div class="heritage-img-wrapper">
+
+                    <img
+                        src="C:\codage\Nouveau dossier\pppppp\7d4912fd-9175-4fa1-bf04-698eed42d38d-US0KP.webp"
+                        alt="التطريز الفلسطيني"
+                        class="img-placeholder">
+
+                </div>
+
+                <h3>
+                    التطريز الفلسطيني
+                </h3>
+
+                <p>
+                    ممارسة اجتماعية وفنية متوارثة أدرجتها اليونسكو
+                    ضمن قائمة التراث الثقافي غير المادي للبشرية سنة 2021.
+                </p>
+
+            </div>
+
+
+            <!-- OLIVE -->
+
+            <div class="glass-card heritage-card reveal">
+
+                <div class="heritage-img-wrapper">
+
+                    <img
+                        src="C:\codage\Nouveau dossier\pppppp\images (8).jpg"
+                        alt="شجرة الزيتون الفلسطينية"
+                        class="img-placeholder">
+
+                </div>
+
+                <h3>
+                    شجرة الزيتون
+                </h3>
+
+                <p>
+                    من أبرز رموز الحياة الزراعية والتراثية في فلسطين،
+                    وترتبط بها تقاليد زراعية واقتصادية واجتماعية قديمة.
+                </p>
+
+            </div>
+
+
+            <!-- KEFFIYEH -->
+
+            <div class="glass-card heritage-card reveal">
+
+                <div class="heritage-img-wrapper">
+
+                    <img
+                        src="C:\codage\Nouveau dossier\pppppp\1س-1700393589.webp"
+                        alt="الكوفية الفلسطينية"
+                        class="img-placeholder">
+
+                </div>
+
+                <h3>
+                    الكوفية الفلسطينية
+                </h3>
+
+                <p>
+                    قطعة ملابس تقليدية أصبحت رمزاً ثقافياً معروفاً
+                    للهوية الفلسطينية في فلسطين وخارجها.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             REAL MAP AREA
+        ====================================================== -->
+
+        <div class="map-section reveal">
+
+
+            <div class="map-visual">
+
+                <!--
+                    IMPORTANT:
+                    PUT A CLEAR MAP IMAGE HERE
+                -->
+
+                <img
+                    src="C:\codage\Nouveau dossier\pppppp\images (9).jpg"
+                    alt="خريطة فلسطين"
+                    class="map-image">
+
+
+                <!-- JERUSALEM -->
+
+                <div
+                    class="hotspot active"
+                    data-city="jerusalem"
+                    title="القدس">
+                </div>
+
+
+                <!-- GAZA -->
+
+                <div
+                    class="hotspot"
+                    data-city="gaza"
+                    title="غزة">
+                </div>
+
+
+                <!-- NABLUS -->
+
+                <div
+                    class="hotspot"
+                    data-city="nablus"
+                    title="نابلس">
+                </div>
+
+
+                <!-- HEBRON -->
+
+                <div
+                    class="hotspot"
+                    data-city="hebron"
+                    title="الخليل">
+                </div>
+
+            </div>
+
+
+            <div
+                class="map-details"
+                id="map-details-box">
+
+                <span
+                    class="city-tag"
+                    id="city-tag">
+
+                    القدس
+
+                </span>
+
+
+                <h3 id="city-title">
+
+                    القدس الشريف
+
+                </h3>
+
+
+                <p id="city-desc">
+
+                    مدينة ذات أهمية دينية وتاريخية كبيرة،
+                    وتضم المسجد الأقصى وكنيسة القيامة،
+                    وتحتل مكانة مركزية في التاريخ والثقافة الفلسطينية.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MEMORY
+========================================================== -->
+
+<section id="memory" style="padding:6rem 0;">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                الذاكرة — لن ننسى
+            </h2>
+
+            <p>
+                أصوات الأدب والوعي الإنساني
+            </p>
+
+        </div>
+
+
+        <div class="memory-quotes reveal">
+
+            <div class="glass-card quote-card">
+
+                <i class="fa-solid fa-quote-right"></i>
+
+                <div class="quote-text">
+
+                    "على هذه الأرض ما يستحق الحياة:
+                    على هذه الأرض سيدة الأرض،
+                    أم البدايات أم النهايات."
+
+                </div>
+
+                <div class="quote-author">
+                    — محمود درويش
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STUDENTS VOICES
+========================================================== -->
+
+<section
+    id="voices"
+    style="padding:6rem 0;background:rgba(0,0,0,0.2);">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                أصوات الطلبة / Students' Voices
+            </h2>
+
+            <p>
+                مساحة تعبيرية لطلاب المعهد النموذجي بقبلي
+            </p>
+
+        </div>
+
+
+        <div class="voice-section-wrapper">
+
+
+            <!-- FORM -->
+
+            <div class="glass-card voice-form-box reveal">
+
+                <h3>
+                    أضف رسالتك
+                </h3>
+
+
+                <form id="student-form">
+
+
+                    <div class="form-group">
+
+                        <label for="student-name">
+                            الاسم واللقب:
+                        </label>
+
+                        <input
+                            type="text"
+                            id="student-name"
+                            class="form-control"
+                            placeholder="مثال: أسامة بن علي"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="student-class">
+                            القسم:
+                        </label>
+
+                        <input
+                            type="text"
+                            id="student-class"
+                            class="form-control"
+                            value="2ème Sciences"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="student-msg">
+                            الرسالة:
+                        </label>
+
+                        <textarea
+                            id="student-msg"
+                            class="form-control"
+                            placeholder="اكتب كلمتك..."
+                            required>
+                        </textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        style="width:100%;">
+
+                        <span>
+                            انشر الرسالة
+                        </span>
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- MESSAGES -->
+
+            <div
+                class="messages-wall reveal"
+                id="messages-wall">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SOURCES
+========================================================== -->
+
+<section
+    id="sources"
+    style="padding:4rem 0;">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <h2>
+                المصادر والمراجع
+            </h2>
+
+            <p>
+                مصادر دولية وتقارير موثوقة
+            </p>
+
+        </div>
+
+
+        <ul class="sources-list reveal">
+
+            <li class="source-item">
+                <i class="fa-solid fa-check"></i>
+                United Nations
+            </li>
+
+            <li class="source-item">
+                <i class="fa-solid fa-check"></i>
+                UN OCHA
+            </li>
+
+            <li class="source-item">
+                <i class="fa-solid fa-check"></i>
+                World Health Organization
+            </li>
+
+            <li class="source-item">
+                <i class="fa-solid fa-check"></i>
+                OHCHR
+            </li>
+
+            <li class="source-item">
+                <i class="fa-solid fa-check"></i>
+                ICRC
+            </li>
+
+            <li class="source-item">
+                <i class="fa-solid fa-check"></i>
+                UNESCO
+            </li>
+
+            <li class="source-item">
+                <i class="fa-solid fa-check"></i>
+                Reuters
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-school">
+            المعهد النموذجي بقبلي
+        </div>
+
+
+        <div class="footer-meta">
+            القسم: 2ème Sciences
+            • إشراف الأستاذ: أمحمد عقاب
+        </div>
+
+
+        <div class="footer-author">
+            إعداد: Israa Bensaid
+        </div>
+
+
+        <div class="footer-tagline">
+            PALESTINE — MEMORY, IDENTITY, HUMANITY
+        </div>
+
+
+        <p style="color:var(--text-muted);font-size:0.8rem;">
+
+            تم تطوير هذا المشروع التفاعلي
+            في إطار الأنشطة التربوية والإنسانية 2026.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     MODAL
+========================================================== -->
+
+<div
+    class="modal-overlay"
+    id="modal-overlay">
+
+    <div
+        class="modal-container"
+        id="modal-container">
+
+
+        <button
+            class="modal-close"
+            id="modal-close-btn"
+            onclick="closeModal()">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div id="modal-content-dynamic">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+
+/* =========================================================
+   MODAL DATA
+========================================================= */
+
+const modalData = {
+
+
+    /* =====================================================
+       AHMED YASSIN
+    ===================================================== */
+
+    'modal-yassin': {
+
+        title:
+            'الشيخ أحمد ياسين',
+
+        subtitle:
+            '1936 — 2004 | شخصية سياسية ودينية فلسطينية',
+
+        img:
+            'PUT_AHMED_YASSIN_IMAGE_URL_HERE',
+
+        body: `
+
+            <p>
+                ولد أحمد ياسين سنة 1936 في قرية الجورة
+                بالقرب من مدينة المجدل.
+            </p>
+
+            <br>
+
+            <p>
+                أصبح من الشخصيات الدينية والسياسية الفلسطينية
+                البارزة، وكان من مؤسسي حركة حماس سنة 1987.
+            </p>
+
+            <br>
+
+            <p>
+                تعرض للاعتقال من السلطات الإسرائيلية في فترات مختلفة،
+                وقُتل في غارة جوية إسرائيلية في غزة يوم
+                22 مارس 2004.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       YAHYA SINWAR
+    ===================================================== */
+
+    'modal-sinwar': {
+
+        title:
+            'يحيى السنوار',
+
+        subtitle:
+            '1962 — 2024 | شخصية سياسية فلسطينية',
+
+        img:
+            'PUT_YAHYA_SINWAR_IMAGE_URL_HERE',
+
+        body: `
+
+            <p>
+                ولد يحيى السنوار سنة 1962 في مخيم خان يونس
+                جنوب قطاع غزة.
+            </p>
+
+            <br>
+
+            <p>
+                أمضى سنوات طويلة في السجون الإسرائيلية،
+                وأُفرج عنه سنة 2011 ضمن صفقة تبادل أسرى.
+            </p>
+
+            <br>
+
+            <p>
+                تولى قيادة حركة حماس في قطاع غزة سنة 2017،
+                ثم أصبح رئيس المكتب السياسي للحركة سنة 2024.
+            </p>
+
+            <br>
+
+            <p>
+                قُتل في أكتوبر 2024 خلال الحرب في قطاع غزة.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       ISMAIL HANIYEH
+    ===================================================== */
+
+    'modal-hanieh': {
+
+        title:
+            'إسماعيل هنية',
+
+        subtitle:
+            '1962 — 2024 | شخصية سياسية فلسطينية',
+
+        img:
+            'PUT_ISMAIL_HANIYEH_IMAGE_URL_HERE',
+
+        body: `
+
+            <p>
+                ولد إسماعيل هنية سنة 1962 في مخيم الشاطئ
+                في قطاع غزة.
+            </p>
+
+            <br>
+
+            <p>
+                شغل منصب رئيس الوزراء الفلسطيني بعد انتخابات
+                المجلس التشريعي سنة 2006.
+            </p>
+
+            <br>
+
+            <p>
+                أصبح رئيساً للمكتب السياسي لحركة حماس
+                سنة 2017.
+            </p>
+
+            <br>
+
+            <p>
+                قُتل في العاصمة الإيرانية طهران
+                في يوليو 2024.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       ANAS AL SHARIF
+    ===================================================== */
+
+    'modal-anas': {
+
+        title:
+            'أنس الشريف',
+
+        subtitle:
+            'صحفي فلسطيني | 1996 — 2025',
+
+        img:
+            'PUT_ANAS_AL_SHARIF_IMAGE_URL_HERE',
+
+        body: `
+
+            <p>
+                أنس الشريف صحفي فلسطيني ومراسل لقناة الجزيرة
+                في قطاع غزة، وُلد سنة 1996.
+            </p>
+
+            <br>
+
+            <p>
+                عمل على تغطية الحرب والأوضاع الإنسانية في قطاع غزة،
+                وظهر في تقارير إعلامية عديدة من شمال القطاع.
+            </p>
+
+            <br>
+
+            <p>
+                قُتل في مدينة غزة يوم 10 أغسطس 2025
+                في غارة جوية إسرائيلية.
+            </p>
+
+            <br>
+
+            <p>
+                أعلنت السلطات الإسرائيلية أن لديها اتهامات
+                تتعلق بانتمائه إلى حماس، بينما رفضت الجزيرة
+                هذه الاتهامات، كما أثارت منظمات دولية معنية
+                بحرية الصحافة تساؤلات حولها.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       SALEH AL JAFARAWI
+    ===================================================== */
+
+    'modal-saleh': {
+
+        title:
+            'صالح الجعفراوي',
+
+        subtitle:
+            'صحفي وصانع محتوى فلسطيني',
+
+        img:
+            'PUT_SALEH_AL_JAFARAWI_IMAGE_URL_HERE',
+
+        body: `
+
+            <p>
+                صالح الجعفراوي صحفي وصانع محتوى فلسطيني
+                من قطاع غزة، عُرف بتوثيق الأحداث اليومية
+                والظروف الإنسانية خلال الحرب.
+            </p>
+
+            <br>
+
+            <p>
+                استخدم منصاته الرقمية لنقل صور ومقاطع
+                من الحياة اليومية في قطاع غزة.
+            </p>
+
+            <br>
+
+            <p>
+                قُتل في أكتوبر 2025 خلال أحداث ميدانية
+                في مدينة غزة.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       HUSSAM ABU SAFIYA
+    ===================================================== */
+
+    'modal-safiya': {
+
+        title:
+            'د. حسام أبو صفية',
+
+        subtitle:
+            'طبيب أطفال ومدير مستشفى كمال عدوان سابقاً',
+
+        img:
+            'PUT_HUSSAM_ABU_SAFIYA_IMAGE_URL_HERE',
+
+        body: `
+
+            <p>
+                حسام أبو صفية طبيب أطفال فلسطيني عمل
+                في شمال قطاع غزة، وارتبط اسمه بإدارة
+                مستشفى كمال عدوان.
+            </p>
+
+            <br>
+
+            <p>
+                خلال الحرب، واصل المستشفى تقديم خدمات
+                طبية في ظروف شديدة الصعوبة.
+            </p>
+
+            <br>
+
+            <p>
+                أعلنت منظمة الصحة العالمية في ديسمبر 2024
+                أنها فقدت الاتصال بالدكتور أبو صفية بعد
+                احتجازه أثناء مداهمة المستشفى.
+            </p>
+
+        `
+    }
+
+};
+
+
+/* =========================================================
+   CITY DATA
+========================================================= */
+
+const cityData = {
+
+
+    jerusalem: {
+
+        title:
+            'القدس الشريف',
+
+        tag:
+            'مدينة ذات مكانة تاريخية ودينية',
+
+        desc:
+            'مدينة ذات أهمية دينية وتاريخية كبيرة، وتضم المسجد الأقصى وكنيسة القيامة، وتحتل مكانة مركزية في التاريخ والثقافة الفلسطينية.'
+
+    },
+
+
+    gaza: {
+
+        title:
+            'قطاع غزة',
+
+        tag:
+            'الساحل الفلسطيني',
+
+        desc:
+            'منطقة ساحلية فلسطينية على البحر المتوسط، وتضم مدناً وبلدات ومخيمات فلسطينية، وقد شهدت أزمات إنسانية متواصلة خلال العقود الأخيرة.'
+
+    },
+
+
+    nablus: {
+
+        title:
+            'نابلس',
+
+        tag:
+            'مدينة تاريخية في الضفة الغربية',
+
+        desc:
+            'مدينة فلسطينية تاريخية تشتهر ببلدتها القديمة وصناعة الصابون النابلسي وتراثها الثقافي.'
+
+    },
+
+
+    hebron: {
+
+        title:
+            'الخليل',
+
+        tag:
+            'مدينة تاريخية في الضفة الغربية',
+
+        desc:
+            'مدينة فلسطينية تاريخية تضم البلدة القديمة والحرم الإبراهيمي، وتشتهر أيضاً بالزراعة والحرف والصناعات التقليدية.'
+
+    }
+
+};
+
+
+/* =========================================================
+   DOM CONTENT LOADED
+========================================================= */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    () => {
+
+
+        /* LOADER */
+
+        setTimeout(
+            () => {
+
+                const loader =
+                    document.getElementById(
+                        'loading-screen'
+                    );
+
+                loader.style.opacity = '0';
+
+                loader.style.visibility =
+                    'hidden';
+
+            },
+            1200
+        );
+
+
+        /* STUDENT MESSAGES */
+
+        loadStudentMessages();
+
+
+        /* REVEAL */
+
+        initScrollObserver();
+
+
+        /* EVENTS */
+
+        setupEventListeners();
+
+    }
+);
+
+
+/* =========================================================
+   EVENT LISTENERS
+========================================================= */
+
+function setupEventListeners() {
+
+
+    /* =====================================================
+       SCROLL
+    ===================================================== */
+
+    window.addEventListener(
+        'scroll',
+        () => {
+
+
+            const winScroll =
+                document.body.scrollTop ||
+                document.documentElement.scrollTop;
+
+
+            const height =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+
+
+            const scrolled =
+                (winScroll / height) * 100;
+
+
+            document.getElementById(
+                'scroll-progress'
+            ).style.width =
+                scrolled + '%';
+
+
+            /* NAVBAR */
+
+            const navbar =
+                document.getElementById(
+                    'navbar'
+                );
+
+
+            if (window.scrollY > 50) {
+
+                navbar.classList.add(
+                    'scrolled'
+                );
+
+            } else {
+
+                navbar.classList.remove(
+                    'scrolled'
+                );
+
+            }
+
+
+            /* STATS */
+
+            checkStatCounterTrigger();
+
+        }
+    );
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const mobileBtn =
+        document.getElementById(
+            'mobile-toggle'
+        );
+
+
+    const navLinks =
+        document.getElementById(
+            'nav-links'
+        );
+
+
+    mobileBtn.addEventListener(
+        'click',
+        () => {
+
+            navLinks.classList.toggle(
+                'mobile-active'
+            );
+
+        }
+    );
+
+
+    document
+        .querySelectorAll('.nav-links a')
+        .forEach(
+            link => {
+
+                link.addEventListener(
+                    'click',
+                    () => {
+
+                        navLinks.classList.remove(
+                            'mobile-active'
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       MAP HOTSPOTS
+    ===================================================== */
+
+    document
+        .querySelectorAll('.hotspot')
+        .forEach(
+            spot => {
+
+                spot.addEventListener(
+                    'click',
+                    e => {
+
+
+                        document
+                            .querySelectorAll('.hotspot')
+                            .forEach(
+                                s =>
+                                    s.classList.remove(
+                                        'active'
+                                    )
+                            );
+
+
+                        e.target.classList.add(
+                            'active'
+                        );
+
+
+                        const cityKey =
+                            e.target.getAttribute(
+                                'data-city'
+                            );
+
+
+                        if (cityData[cityKey]) {
+
+                            document.getElementById(
+                                'city-title'
+                            ).innerText =
+                                cityData[cityKey].title;
+
+
+                            document.getElementById(
+                                'city-tag'
+                            ).innerText =
+                                cityData[cityKey].tag;
+
+
+                            document.getElementById(
+                                'city-desc'
+                            ).innerText =
+                                cityData[cityKey].desc;
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       STUDENT FORM
+    ===================================================== */
+
+    const form =
+        document.getElementById(
+            'student-form'
+        );
+
+
+    form.addEventListener(
+        'submit',
+        e => {
+
+            e.preventDefault();
+
+
+            const name =
+                document
+                    .getElementById(
+                        'student-name'
+                    )
+                    .value
+                    .trim();
+
+
+            const cls =
+                document
+                    .getElementById(
+                        'student-class'
+                    )
+                    .value
+                    .trim();
+
+
+            const msg =
+                document
+                    .getElementById(
+                        'student-msg'
+                    )
+                    .value
+                    .trim();
+
+
+            if (name && cls && msg) {
+
+
+                const newMsg = {
+
+                    name,
+
+                    class: cls,
+
+                    message: msg,
+
+                    date:
+                        new Date()
+                            .toLocaleDateString(
+                                'ar-TN'
+                            )
+
+                };
+
+
+                saveStudentMessage(
+                    newMsg
+                );
+
+
+                form.reset();
+
+
+                document.getElementById(
+                    'student-class'
+                ).value =
+                    '2ème Sciences';
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       ESC CLOSE MODAL
+    ===================================================== */
+
+    document.addEventListener(
+        'keydown',
+        e => {
+
+            if (e.key === 'Escape') {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CLICK OUTSIDE MODAL
+    ===================================================== */
+
+    document
+        .getElementById('modal-overlay')
+        .addEventListener(
+            'click',
+            e => {
+
+                if (
+                    e.target.id ===
+                    'modal-overlay'
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
+
+function openModal(key) {
+
+
+    const data =
+        modalData[key];
+
+
+    if (!data) return;
+
+
+    const contentHtml = `
+
+        <img
+            src="${data.img}"
+            alt="${data.title}"
+            class="modal-header-img img-placeholder"
+        >
+
+        <h2 class="modal-title">
+            ${data.title}
+        </h2>
+
+        <div class="modal-subtitle">
+            ${data.subtitle}
+        </div>
+
+        <div class="modal-body">
+            ${data.body}
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        'modal-content-dynamic'
+    ).innerHTML =
+        contentHtml;
+
+
+    const overlay =
+        document.getElementById(
+            'modal-overlay'
+        );
+
+
+    overlay.classList.add(
+        'active'
+    );
+
+
+    document.body.style.overflow =
+        'hidden';
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal() {
+
+
+    const overlay =
+        document.getElementById(
+            'modal-overlay'
+        );
+
+
+    overlay.classList.remove(
+        'active'
+    );
+
+
+    document.body.style.overflow =
+        'auto';
+}
+
+
+/* =========================================================
+   DEFAULT STUDENT MESSAGES
+========================================================= */
+
+const defaultMessages = [
+
+
+    {
+
+        name:
+            "أسامة بن علي",
+
+        class:
+            "2ème Sciences",
+
+        message:
+            "من المعهد النموذجي بقبلي نرسل رسالة إنسانية إلى كل من فقد عزيزاً، وإلى كل طفل يحلم بالعودة إلى مدرسته."
+
+    },
+
+
+    {
+
+        name:
+            "مريم العبيدي",
+
+        class:
+            "2ème Sciences",
+
+        message:
+            "الذاكرة لا تموت، والثقافة والتراث والقصص التي نحفظها تبقى شاهدة على الإنسان والأرض."
+
+    }
+
+];
+
+
+/* =========================================================
+   LOAD MESSAGES
+========================================================= */
+
+function loadStudentMessages() {
+
+
+    let msgs =
+        JSON.parse(
+            localStorage.getItem(
+                'paly_student_msgs'
+            )
+        );
+
+
+    if (
+        !msgs ||
+        msgs.length === 0
+    ) {
+
+        msgs =
+            defaultMessages;
+
+
+        localStorage.setItem(
+            'paly_student_msgs',
+            JSON.stringify(msgs)
+        );
+
+    }
+
+
+    renderMessages(
+        msgs
+    );
+}
+
+
+/* =========================================================
+   SAVE MESSAGE
+========================================================= */
+
+function saveStudentMessage(
+    msgObj
+) {
+
+
+    let msgs =
+        JSON.parse(
+            localStorage.getItem(
+                'paly_student_msgs'
+            )
+        ) || [];
+
+
+    msgs.unshift(
+        msgObj
+    );
+
+
+    localStorage.setItem(
+        'paly_student_msgs',
+        JSON.stringify(msgs)
+    );
+
+
+    renderMessages(
+        msgs
+    );
+}
+
+
+/* =========================================================
+   RENDER MESSAGES
+========================================================= */
+
+function renderMessages(
+    msgs
+) {
+
+
+    const wall =
+        document.getElementById(
+            'messages-wall'
+        );
+
+
+    wall.innerHTML =
+        msgs.map(
+            m => `
+
+                <div class="message-card">
+
+                    <div class="message-header">
+
+                        <span class="message-author">
+                            ${escapeHtml(m.name)}
+                        </span>
+
+                        <span class="message-class">
+                            ${escapeHtml(m.class)}
+                        </span>
+
+                    </div>
+
+                    <div class="message-body">
+                        ${escapeHtml(m.message)}
+                    </div>
+
+                </div>
+
+            `
+        ).join('');
+
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+function escapeHtml(
+    str
+) {
+
+    return str
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+function initScrollObserver() {
+
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList
+                                .add(
+                                    'active'
+                                );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            '.reveal'
+        )
+        .forEach(
+            el =>
+                observer.observe(
+                    el
+                )
+        );
+
+}
+
+
+/* =========================================================
+   STAT COUNTER
+========================================================= */
+
+let statAnimated =
+    false;
+
+
+function checkStatCounterTrigger() {
+
+
+    const gazaSection =
+        document.getElementById(
+            'gaza'
+        );
+
+
+    if (!gazaSection)
+        return;
+
+
+    const rect =
+        gazaSection.getBoundingClientRect();
+
+
+    if (
+        rect.top <
+            window.innerHeight &&
+        rect.bottom >= 0 &&
+        !statAnimated
+    ) {
+
+
+        statAnimated =
+            true;
+
+
+        document
+            .querySelectorAll(
+                '.stat-number'
+            )
+            .forEach(
+                counter => {
+
+
+                    const target =
+                        +counter.getAttribute(
+                            'data-target'
+                        );
+
+
+                    let count =
+                        0;
+
+
+                    const speed =
+                        target / 50;
+
+
+                    const update =
+                        () => {
+
+
+                            count +=
+                                speed;
+
+
+                            if (
+                                count <
+                                target
+                            ) {
+
+
+                                counter.innerText =
+                                    count.toFixed(
+                                        target % 1 !== 0
+                                            ? 1
+                                            : 0
+                                    );
+
+
+                                setTimeout(
+                                    update,
+                                    30
+                                );
+
+
+                            } else {
+
+
+                                counter.innerText =
+                                    target;
+
+                            }
+
+                        };
+
+
+                    update();
+
+                }
+            );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
